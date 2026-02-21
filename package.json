@@ -1,9 +1,37 @@
 {
+  "name": "placar-bjj-family",
+  "version": "1.0.0",
+  "description": "🥋 Placar BJJ Family - Placar digital para competições",
+  "main": "main.js",
+  "author": "Vinicius Almeida",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Valmeida26/placar-bjj-family.git"
+  },
   "dependencies": {
     "alpinejs": "^3.13.10",
     "sweetalert2": "^11.6.13"
   },
   "devDependencies": {
+    "electron": "^40.6.0",
+    "electron-builder": "^24.13.3",
     "tailwindcss": "^3.4.3"
+  },
+  "build": {
+    "appId": "com.bjjfamily.placar",
+    "productName": "Placar BJJ Family",
+    "directories": {
+      "output": "nsis"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
   }
 }

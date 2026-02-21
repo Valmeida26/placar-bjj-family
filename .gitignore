@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Electron builder output
+dist/
+nsis/
+
+# Logs
+*.log
+
+# Sistema e IDE
+.DS_Store
+*.tmp
+.vscode/
+.idea/
