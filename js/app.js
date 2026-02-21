@@ -14,6 +14,7 @@ function timer() {
                 }
 
                 this.isRunning = true;
+                this.$dispatch('match-started');
 
                 this.interval = setInterval(() => {
                     if (this.remainingTime > 0) {
@@ -21,6 +22,7 @@ function timer() {
 
                         if (this.remainingTime === 0) {
                             this.pauseTimer();
+                            this.$dispatch('match-ended');
                             this.playBeepMultiple(1, 300); // 3 beeps de 0.3s cada
                         }
 

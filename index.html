@@ -21,12 +21,17 @@
     athleteOne: 0,
     athleteTwo: 0,
     athleteOneName: 'Primeiro Atleta',
-    athleteTwoName: 'Segundo Atleta'
+    athleteTwoName: 'Segundo Atleta',
+    matchActive: false
     }"
     x-on:reset-score.window="
     athleteOne = 0;
     athleteTwo = 0;
+    matchActive = false;
     "
+     x-on:match-started.window="matchActive = true"
+     x-on:match-ended.window="matchActive = false"
+
             class="h-screen w-screen flex items-center justify-center bg-neutral-900 overflow-hidden"
     >
 
@@ -44,36 +49,72 @@
                 <div>
                     <ul class="flex gap-8 justify-between">
                         <li>
-                            <button @click="athleteOne += 2"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+2
+                            <button
+                                    @click="matchActive && (athleteOne += 2)"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                +2
                             </button>
                         </li>
                         <li>
-                            <button @click="athleteOne += 3"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+3
+                            <button
+                                    @click="matchActive && (athleteOne += 3)"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                +3
                             </button>
                         </li>
                         <li>
-                            <button @click="athleteOne += 4"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+4
+                            <button
+                                    @click="matchActive && (athleteOne += 4)"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                +4
                             </button>
                         </li>
                     </ul>
 
                     <ul class="flex gap-8 mt-4 justify-end">
                         <li>
-                            <button @click="athleteOne = Math.max(0, athleteOne - 2)"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-2
+                            <button
+                                    @click="matchActive && (athleteOne = Math.max(0, athleteOne - 2))"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                -2
                             </button>
                         </li>
                         <li>
-                            <button @click="athleteOne = Math.max(0, athleteOne - 3)"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-3
+                            <button
+                                    @click="matchActive && (athleteOne = Math.max(0, athleteOne - 3))"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                -3
                             </button>
                         </li>
                         <li>
-                            <button @click="athleteOne = Math.max(0, athleteOne - 4)"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-4
+                            <button
+                                    @click="matchActive && (athleteOne = Math.max(0, athleteOne - 4))"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                -4
                             </button>
                         </li>
                     </ul>
@@ -149,35 +190,71 @@
                 <div>
                     <ul class="flex gap-8 justify-end">
                         <li>
-                            <button @click="athleteTwo += 2"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+2
+                            <button
+                                    @click="matchActive && (athleteTwo += 2)"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                +2
                             </button>
                         </li>
                         <li>
-                            <button @click="athleteTwo += 3"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+3
+                            <button
+                                    @click="matchActive && (athleteTwo += 3)"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                +3
                             </button>
                         </li>
                         <li>
-                            <button @click="athleteTwo += 4"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+4
+                            <button
+                                    @click="matchActive && (athleteTwo += 4)"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                +4
                             </button>
                         </li>
                     </ul>
                     <ul class="flex gap-8 mt-4 justify-end">
                         <li>
-                            <button @click="athleteTwo = Math.max(0, athleteTwo - 2)"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-2
+                            <button
+                                    @click="matchActive && (athleteTwo = Math.max(0, athleteTwo - 2))"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                -2
                             </button>
                         </li>
                         <li>
-                            <button @click="athleteTwo = Math.max(0, athleteTwo - 3)"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-3
+                            <button
+                                    @click="matchActive && (athleteTwo = Math.max(0, athleteTwo - 3))"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                -3
                             </button>
                         </li>
                         <li>
-                            <button @click="athleteTwo = Math.max(0, athleteTwo - 4)"
-                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-4
+                            <button
+                                    @click="matchActive && (athleteTwo = Math.max(0, athleteTwo - 4))"
+                                    :disabled="!matchActive"
+                                    :class="!matchActive
+                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                    : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition">
+                                -4
                             </button>
                         </li>
                     </ul>
