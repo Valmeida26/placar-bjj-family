@@ -118,7 +118,7 @@ Baixe o projeto em formato .zip ou clone o repositório:
 
 
 
-git clone https://github.com/seu-usuario/placar-bjj-family.git
+git clone https://github.com/Valmeida26/placar-bjj-family.git
 
 2️⃣ Executar
 
