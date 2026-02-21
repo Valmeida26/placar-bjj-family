@@ -24,10 +24,10 @@
         athleteOneName: 'Primeiro Atleta',
         athleteTwoName: 'Segundo Atleta'
     }"
-            class="h-screen w-screen flex bg-neutral-900"
+            class="h-screen w-screen flex items-center justify-center bg-neutral-900 overflow-hidden"
     >
 
-        <div class="w-full h-full max-w-[1800px] mx-auto my-auto grid grid-cols-3 px-8">
+        <div class="w-full h-full grid grid-cols-3 px-[3vw]">
             <!-- =========================
                  ATLETA 1 (ESQUERDA)
             ========================== -->
@@ -35,7 +35,7 @@
                 <!-- Nome -->
                 <div class="flex gap-4 items-start w-full">
                     <!--				<img src="./img/flags/logo-bjj-family-white-sem-fundo.png" class="h-full w-24 object-cover" alt="">-->
-                    <h2 class="uppercase text-white text-[50px]" x-text="athleteOneName"></h2>
+                    <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]" x-text="athleteOneName"></h2>
                 </div>
                 <!-- Botões -->
                 <div>
@@ -76,8 +76,13 @@
                     </ul>
                 </div>
                 <!-- Placar -->
-                <div class="flex justify-between">
-                    <div class="w-56 h-72 bg-neutral-800/80 text-neutral-100 flex items-center justify-center text-[220px] font-bold rounded-lg">
+                <div class="flex justify-end">
+                    <div
+                            class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg"
+                            :class="athleteOne >= 100
+                            ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
+                            : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'"
+                    >
                         <span x-text="athleteOne"></span>
                     </div>
                 </div>
@@ -92,16 +97,16 @@
                     <!-- Coloque seu logo aqui -->
                     <img src="./img/flags/logo-bjj-family-white-sem-fundo.png"
                          alt="Logo"
-                         class="fa-box-up object-contain w-56 h-56">
+                         class="fa-box-up object-contain w-[14vw] h-[14vw]">
                 </div>
 
-                <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[380px]"
+                <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[20vw]"
                      x-data="timer()">
 
                     <!-- Mostrador -->
                     <h1
                             x-text="formatTime(remainingTime)"
-                            class="text-[140px] text-white tabular-nums mb-6">
+                            class="text-[clamp(80px,8vw,300px)] text-white tabular-nums mb-6">
                     </h1>
 
                     <!-- Controles -->
@@ -134,7 +139,7 @@
                 <!-- Nome -->
                 <div class="flex gap-4 items-center w-full justify-end">
                     <!--				<img src="./img/flags/logo-bjj-family-white-sem-fundo.png" class="h-full w-24 object-cover" alt="">-->
-                    <h2 class="uppercase text-white text-[50px]" x-text="athleteTwoName"></h2>
+                    <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]" x-text="athleteTwoName"></h2>
                 </div>
 
                 <!-- Botões -->
@@ -176,7 +181,12 @@
                 </div>
                 <!-- Placar -->
                 <div class="flex justify-end">
-                    <div class="w-56 h-72 bg-green-800 flex items-center justify-center text-[220px] font-bold text-yellow-400 rounded-lg">
+                    <div
+                            class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg"
+                            :class="athleteTwo >= 100
+                            ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
+                            : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'"
+                    >
                         <span x-text="athleteTwo"></span>
                     </div>
                 </div>
