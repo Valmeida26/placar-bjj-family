@@ -871,7 +871,7 @@ video {
   --tw-contain-size: ;
   --tw-contain-layout: ;
   --tw-contain-paint: ;
-  --tw-contain-style:
+  --tw-contain-style: ;
 
 }
 
@@ -926,7 +926,7 @@ video {
   --tw-contain-size: ;
   --tw-contain-layout: ;
   --tw-contain-paint: ;
-  --tw-contain-style:
+  --tw-contain-style: ;
 
 }
 
@@ -1109,7 +1109,12 @@ video {
 
 .bg-bjj-blue {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 102 / var(--tw-bg-opacity))
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.bg-bjj-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-red-600 {
@@ -1138,7 +1143,7 @@ video {
 
 .bg-blue {
   --tw-bg-opacity: 1;
-  background-color: (#000066ee / var(--tw-bg-opacity))
+  background-color: rgb(#000066ee / var(--tw-bg-opacity))
 }
 
 .object-cover {
