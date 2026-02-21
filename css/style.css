@@ -371,7 +371,7 @@ video {
     --tw-contain-size: ;
     --tw-contain-layout: ;
     --tw-contain-paint: ;
-    --tw-contain-style:
+    --tw-contain-style: ;
 }
 
 ::backdrop {
@@ -425,7 +425,7 @@ video {
     --tw-contain-size: ;
     --tw-contain-layout: ;
     --tw-contain-paint: ;
-    --tw-contain-style:
+    --tw-contain-style: ;
 }
 
 .absolute {
@@ -635,7 +635,7 @@ video {
 
 .bg-blue {
     --tw-bg-opacity: 1;
-    background-color: (#000066ee / var(--tw-bg-opacity))
+    background-color: rgb(#000066ee / var(--tw-bg-opacity))
 }
 
 .object-cover {
