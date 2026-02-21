@@ -46,7 +46,10 @@ function timer() {
 
         setTime(minutes) {
             this.remainingTime = minutes * 60;
-            this.pauseTimer(); // pausa ao definir novo tempo
+            this.pauseTimer();
+
+            //dispara evento global para zerar placar
+            this.$dispatch('reset-score');
         },
 
         formatTime(time) {

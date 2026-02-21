@@ -17,13 +17,16 @@
 <body class="bg-neutral-900 h-full">
 
 <main class="grid grid-flow-col grid-cols-12 grid-rows-3 w-full">
-    <section
-            x-data="{
-        athleteOne: 0,
-        athleteTwo: 0,
-        athleteOneName: 'Primeiro Atleta',
-        athleteTwoName: 'Segundo Atleta'
+    <section x-data="{
+    athleteOne: 0,
+    athleteTwo: 0,
+    athleteOneName: 'Primeiro Atleta',
+    athleteTwoName: 'Segundo Atleta'
     }"
+    x-on:reset-score.window="
+    athleteOne = 0;
+    athleteTwo = 0;
+    "
             class="h-screen w-screen flex items-center justify-center bg-neutral-900 overflow-hidden"
     >
 
