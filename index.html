@@ -24,163 +24,163 @@
         athleteOneName: 'Primeiro Atleta',
         athleteTwoName: 'Segundo Atleta'
     }"
-            class="h-screen w-screen flex items-center justify-center bg-neutral-900"
+            class="h-screen w-screen flex bg-neutral-900"
     >
 
-        <div class="w-full h-full max-w-[1800px] grid grid-cols-3 items-center px-8">
-        <!-- =========================
-             ATLETA 1 (ESQUERDA)
-        ========================== -->
-        <div class="flex flex-col gap-16 justify-between items-start">
-            <!-- Nome -->
-            <div class="flex gap-4 items-start w-full">
-                <!--				<img src="./img/flags/logo-bjj-family-white-sem-fundo.png" class="h-full w-24 object-cover" alt="">-->
-                <h2 class="uppercase text-white text-[50px]" x-text="athleteOneName"></h2>
-            </div>
-            <!-- Botões -->
-            <div>
-                <ul class="flex gap-8 justify-between">
-                    <li>
-                        <button @click="athleteOne += 2"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+2
-                        </button>
-                    </li>
-                    <li>
-                        <button @click="athleteOne += 3"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+3
-                        </button>
-                    </li>
-                    <li>
-                        <button @click="athleteOne += 4"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+4
-                        </button>
-                    </li>
-                </ul>
-
-                <ul class="flex gap-8 mt-4 justify-end">
-                    <li>
-                        <button @click="athleteOne = Math.max(0, athleteOne - 2)"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-2
-                        </button>
-                    </li>
-                    <li>
-                        <button @click="athleteOne = Math.max(0, athleteOne - 3)"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-3
-                        </button>
-                    </li>
-                    <li>
-                        <button @click="athleteOne = Math.max(0, athleteOne - 4)"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-4
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <!-- Placar -->
-            <div class="flex justify-between">
-                <div class="w-56 h-72 bg-neutral-800/80 text-neutral-100 flex items-center justify-center text-[220px] font-bold rounded-lg">
-                    <span x-text="athleteOne"></span>
+        <div class="w-full h-full max-w-[1800px] mx-auto my-auto grid grid-cols-3 px-8">
+            <!-- =========================
+                 ATLETA 1 (ESQUERDA)
+            ========================== -->
+            <div class="flex flex-col justify-center items-start h-full py-[6vh] gap-[clamp(90px,6vh,120px)]">
+                <!-- Nome -->
+                <div class="flex gap-4 items-start w-full">
+                    <!--				<img src="./img/flags/logo-bjj-family-white-sem-fundo.png" class="h-full w-24 object-cover" alt="">-->
+                    <h2 class="uppercase text-white text-[50px]" x-text="athleteOneName"></h2>
                 </div>
-            </div>
-        </div>
+                <!-- Botões -->
+                <div>
+                    <ul class="flex gap-8 justify-between">
+                        <li>
+                            <button @click="athleteOne += 2"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+2
+                            </button>
+                        </li>
+                        <li>
+                            <button @click="athleteOne += 3"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+3
+                            </button>
+                        </li>
+                        <li>
+                            <button @click="athleteOne += 4"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+4
+                            </button>
+                        </li>
+                    </ul>
 
-        <!-- =========================
-             RELÓGIO (CENTRO)
-        ========================== -->
-        <div class="flex flex-col items-center justify-center gap-6">
-            <!-- LOGO (ACIMA DO RELÓGIO) -->
-            <div class="flex justify-center items-center mt-8">
-                <!-- Coloque seu logo aqui -->
-                <img src="./img/flags/logo-bjj-family-white-sem-fundo.png"
-                     alt="Logo"
-                     class="fa-box-up object-contain w-56 h-56">
-            </div>
-
-            <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[380px]"
-                 x-data="timer()">
-
-                <!-- Mostrador -->
-                <h1
-                        x-text="formatTime(remainingTime)"
-                        class="text-[140px] text-white tabular-nums mb-6">
-                </h1>
-
-                <!-- Controles -->
-                <div class="flex flex-col items-center gap-6 w-full">
-                    <button class="text-white text-4xl"
-                            x-on:click="toggleTimer()">
-                        <i class="fa-solid fa-pause" x-show="isRunning"></i>
-                        <i class="fa-solid fa-play" x-show="!isRunning"></i>
-                    </button>
-                    <div class="flex gap-6">
-                        <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
-                                x-on:click="setTime(2)">2m
-                        </button>
-                        <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
-                                x-on:click="setTime(3)">3m
-                        </button>
-                        <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
-                                x-on:click="setTime(5)">5m
-                        </button>
+                    <ul class="flex gap-8 mt-4 justify-end">
+                        <li>
+                            <button @click="athleteOne = Math.max(0, athleteOne - 2)"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-2
+                            </button>
+                        </li>
+                        <li>
+                            <button @click="athleteOne = Math.max(0, athleteOne - 3)"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-3
+                            </button>
+                        </li>
+                        <li>
+                            <button @click="athleteOne = Math.max(0, athleteOne - 4)"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-4
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Placar -->
+                <div class="flex justify-between">
+                    <div class="w-56 h-72 bg-neutral-800/80 text-neutral-100 flex items-center justify-center text-[220px] font-bold rounded-lg">
+                        <span x-text="athleteOne"></span>
                     </div>
                 </div>
             </div>
-        </div>
 
+            <!-- =========================
+                 RELÓGIO (CENTRO)
+            ========================== -->
+            <div class="flex flex-col items-center justify-center h-full py-[6vh] gap-[clamp(80px,6vh,120px)]">
+                <!-- LOGO (ACIMA DO RELÓGIO) -->
+                <div class="flex justify-center items-center mt-8">
+                    <!-- Coloque seu logo aqui -->
+                    <img src="./img/flags/logo-bjj-family-white-sem-fundo.png"
+                         alt="Logo"
+                         class="fa-box-up object-contain w-56 h-56">
+                </div>
 
-        <!-- =========================
-             ATLETA 2 (DIREITA)
-        ========================== -->
-        <div class="flex flex-col gap-16 justify-end items-end">
-            <!-- Nome -->
-            <div class="flex gap-4 items-center w-full justify-end">
-                <!--				<img src="./img/flags/logo-bjj-family-white-sem-fundo.png" class="h-full w-24 object-cover" alt="">-->
-                <h2 class="uppercase text-white text-[50px]" x-text="athleteTwoName"></h2>
-            </div>
+                <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[380px]"
+                     x-data="timer()">
 
-            <!-- Botões -->
-            <div>
-                <ul class="flex gap-8 justify-end">
-                    <li>
-                        <button @click="athleteTwo += 2"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+2
+                    <!-- Mostrador -->
+                    <h1
+                            x-text="formatTime(remainingTime)"
+                            class="text-[140px] text-white tabular-nums mb-6">
+                    </h1>
+
+                    <!-- Controles -->
+                    <div class="flex flex-col items-center gap-6 w-full">
+                        <button class="text-white text-4xl"
+                                x-on:click="toggleTimer()">
+                            <i class="fa-solid fa-pause" x-show="isRunning"></i>
+                            <i class="fa-solid fa-play" x-show="!isRunning"></i>
                         </button>
-                    </li>
-                    <li>
-                        <button @click="athleteTwo += 3"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+3
-                        </button>
-                    </li>
-                    <li>
-                        <button @click="athleteTwo += 4"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+4
-                        </button>
-                    </li>
-                </ul>
-                <ul class="flex gap-8 mt-4 justify-end">
-                    <li>
-                        <button @click="athleteTwo = Math.max(0, athleteTwo - 2)"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-2
-                        </button>
-                    </li>
-                    <li>
-                        <button @click="athleteTwo = Math.max(0, athleteTwo - 3)"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-3
-                        </button>
-                    </li>
-                    <li>
-                        <button @click="athleteTwo = Math.max(0, athleteTwo - 4)"
-                                class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-4
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <!-- Placar -->
-            <div class="flex justify-end">
-                <div class="w-56 h-72 bg-green-800 flex items-center justify-center text-[220px] font-bold text-yellow-400 rounded-lg">
-                    <span x-text="athleteTwo"></span>
+                        <div class="flex gap-6">
+                            <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
+                                    x-on:click="setTime(2)">2m
+                            </button>
+                            <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
+                                    x-on:click="setTime(3)">3m
+                            </button>
+                            <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
+                                    x-on:click="setTime(5)">5m
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+
+            <!-- =========================
+                 ATLETA 2 (DIREITA)
+            ========================== -->
+            <div class="flex flex-col justify-center items-end h-full py-[6vh] gap-[clamp(90px,6vh,120px)]">
+                <!-- Nome -->
+                <div class="flex gap-4 items-center w-full justify-end">
+                    <!--				<img src="./img/flags/logo-bjj-family-white-sem-fundo.png" class="h-full w-24 object-cover" alt="">-->
+                    <h2 class="uppercase text-white text-[50px]" x-text="athleteTwoName"></h2>
+                </div>
+
+                <!-- Botões -->
+                <div>
+                    <ul class="flex gap-8 justify-end">
+                        <li>
+                            <button @click="athleteTwo += 2"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+2
+                            </button>
+                        </li>
+                        <li>
+                            <button @click="athleteTwo += 3"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+3
+                            </button>
+                        </li>
+                        <li>
+                            <button @click="athleteTwo += 4"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">+4
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="flex gap-8 mt-4 justify-end">
+                        <li>
+                            <button @click="athleteTwo = Math.max(0, athleteTwo - 2)"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-2
+                            </button>
+                        </li>
+                        <li>
+                            <button @click="athleteTwo = Math.max(0, athleteTwo - 3)"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-3
+                            </button>
+                        </li>
+                        <li>
+                            <button @click="athleteTwo = Math.max(0, athleteTwo - 4)"
+                                    class="btn w-10 h-12 bg-neutral-800 text-white hover:bg-white/10">-4
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Placar -->
+                <div class="flex justify-end">
+                    <div class="w-56 h-72 bg-green-800 flex items-center justify-center text-[220px] font-bold text-yellow-400 rounded-lg">
+                        <span x-text="athleteTwo"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </main>
