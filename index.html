@@ -160,16 +160,45 @@
                             <i class="fa-solid fa-pause" x-show="isRunning"></i>
                             <i class="fa-solid fa-play" x-show="!isRunning"></i>
                         </button>
-                        <div class="flex gap-6">
-                            <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
-                                    x-on:click="setTime(2)">2m
+
+                        <div class="relative" x-data="{ openMenu: false }">
+
+                            <!-- Botão ícone relógio -->
+                            <button
+                                    class="text-white text-3xl bg-neutral-900 px-4 py-3 rounded-lg hover:bg-white/10"
+                                    @click="openMenu = !openMenu"
+                            >
+                                <i class="fa-solid fa-clock"></i>
                             </button>
-                            <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
-                                    x-on:click="setTime(3)">3m
-                            </button>
-                            <button class="btn px-6 py-2 bg-neutral-800 text-white hover:bg-white/10"
-                                    x-on:click="setTime(5)">5m
-                            </button>
+
+                            <!-- Menu Dropdown -->
+                            <div
+                                    x-show="openMenu"
+                                    @click.outside="openMenu = false"
+                                    x-transition
+                                    class="absolute bottom-16 left-1/2 -translate-x-1/2
+                                   bg-neutral-900 rounded-xl shadow-2xl
+                                   flex gap-2 p-4"
+                                >
+                                <button
+                                        class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
+                                        @click="setTime(2); openMenu=false">
+                                    2 minutos
+                                </button>
+
+                                <button
+                                        class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
+                                        @click="setTime(3); openMenu=false">
+                                    3 minutos
+                                </button>
+
+                                <button
+                                        class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
+                                        @click="setTime(5); openMenu=false">
+                                    5 minutos
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

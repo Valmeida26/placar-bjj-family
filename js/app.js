@@ -3,7 +3,8 @@ function timer() {
         remainingTime: 300, // valor inicial 5 minutos
         isRunning: false,
         interval: null,
-        audioCtx: null, // contexto de áudio, inicializado só após clique do usuário
+        alarmSound: null,
+        //audioCtx: null, // contexto de áudio, inicializado só após clique do usuário
 
         startTimer() {
             if (!this.isRunning) {
@@ -23,7 +24,8 @@ function timer() {
                         if (this.remainingTime === 0) {
                             this.pauseTimer();
                             this.$dispatch('match-ended');
-                            this.playBeepMultiple(1, 300); // 3 beeps de 0.3s cada
+                            this.playAlarm();
+                            //this.playBeepMultiple(1, 300); // 3 beeps de 0.3s cada
                         }
 
                     } else {
@@ -60,35 +62,45 @@ function timer() {
             return `${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
         },
 
-        playBeep() {
-            if (!this.audioCtx) return;
+        playAlarm() {
+            if (!this.alarmSound) {
+                this.alarmSound = new Audio('./audio/alerta_fim_luta.mp3');
+                this.alarmSound.preload = "auto";
+            }
 
-            const oscillator = this.audioCtx.createOscillator();
-            const gainNode = this.audioCtx.createGain();
-
-            // Som mais "redondo" e menos agudo
-            oscillator.type = 'triangle';
-            oscillator.frequency.setValueAtTime(1300, this.audioCtx.currentTime);
-
-
-            oscillator.connect(gainNode);
-            gainNode.connect(this.audioCtx.destination);
-
-            // Volume forte mas controlado
-            gainNode.gain.setValueAtTime(0.2, this.audioCtx.currentTime);
-
-            oscillator.start();
-
-            // Agora bem mais longo (5 segundos)
-            oscillator.stop(this.audioCtx.currentTime + 2);
+            this.alarmSound.currentTime = 0; // sempre começa do início
+            this.alarmSound.play();
         },
 
+        // playBeep() {
+        //     if (!this.audioCtx) return;
+        //
+        //     const oscillator = this.audioCtx.createOscillator();
+        //     const gainNode = this.audioCtx.createGain();
+        //
+        //     // Som mais "redondo" e menos agudo
+        //     oscillator.type = 'triangle';
+        //     oscillator.frequency.setValueAtTime(1300, this.audioCtx.currentTime);
+        //
+        //
+        //     oscillator.connect(gainNode);
+        //     gainNode.connect(this.audioCtx.destination);
+        //
+        //     // Volume forte mas controlado
+        //     gainNode.gain.setValueAtTime(0.2, this.audioCtx.currentTime);
+        //
+        //     oscillator.start();
+        //
+        //     // Agora bem mais longo (5 segundos)
+        //     oscillator.stop(this.audioCtx.currentTime + 2);
+        // },
+
         // toca múltiplos beeps em sequência
-        playBeepMultiple(times = 1, interval = 300) {
-            for (let i = 0; i < times; i++) {
-                setTimeout(() => this.playBeep(), i * interval);
-            }
-        }
+        // playBeepMultiple(times = 1, interval = 300) {
+        //     for (let i = 0; i < times; i++) {
+        //         setTimeout(() => this.playBeep(), i * interval);
+        //     }
+        // }
     }
 }
 
