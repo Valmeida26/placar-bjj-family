@@ -31,11 +31,6 @@ Este projeto foi adaptado e reestruturado com base no repositório original disp
 ✅ Controle de pontuação para dois atletas
 
 
-
-✅ Controle de vantagens e faltas
-
-
-
 ✅ Cronômetro com opções de:
 
 
@@ -55,25 +50,16 @@ Este projeto foi adaptado e reestruturado com base no repositório original disp
 ✅ Pausar / Retomar cronômetro
 
 
-
-✅ Ajuste manual de tempo
-
-
-
 ✅ Alerta sonoro pra quando acaba o tempo
-
 
 
 ✅ Modo tela cheia
 
 
-
 ✅ Reiniciar placar
 
 
-
 ✅ Identificação visual da escola (logo personalizada)
-
 
 
 ✅ Código-fonte disponível para download

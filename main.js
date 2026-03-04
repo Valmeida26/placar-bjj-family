@@ -6,7 +6,7 @@ function createWindow () {
         width: 1200,
         height: 800,
         autoHideMenuBar: true,
-        fullscreen: false, // mude para true se quiser abrir direto em tela cheia
+        fullscreen: true, // mude para true se quiser abrir direto em tela cheia
     })
 
     win.loadFile('index.html')
