@@ -4,6 +4,7 @@ function timer() {
         isRunning: false,
         interval: null,
         alarmSound: null,
+        canEditScore: false,
         //audioCtx: null, // contexto de áudio, inicializado só após clique do usuário
 
         startTimer() {
