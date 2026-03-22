@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placar</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine -->
+    <script src="node_modules/alpinejs/dist/cdn.min.js" defer></script>
+</head>
+
+<body class="bg-neutral-900 h-full">
+
+<main class="w-full h-screen flex items-center justify-center">
+    <section
+            x-data="{
+            athleteOne: 0,
+            athleteTwo: 0,
+            athleteOneName: 'Primeiro Atleta',
+            athleteTwoName: 'Segundo Atleta'
+        }"
+            x-init="
+            athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
+            athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
+
+            window.addEventListener('storage', () => {
+                athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
+                athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
+        });
+        "
+            class="w-full h-full grid grid-cols-3 px-[3vw]"
+    >
+
+        <!-- ATLETA 1 -->
+        <div class="flex flex-col justify-center items-start gap-[6vh]">
+            <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"
+                x-text="athleteOneName"></h2>
+
+            <div class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg
+                        w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]">
+                <span x-text="athleteOne"></span>
+            </div>
+        </div>
+
+        <!-- CENTRO (LOGO + TIMER) -->
+        <div class="flex flex-col items-center justify-center gap-[6vh]">
+
+            <img src="./img/flags/logo-bjj-family-white-sem-fundo.png"
+                 class="object-contain w-[14vw] h-[14vw]">
+
+            <div x-data="timer()" class="text-white text-[clamp(80px,8vw,300px)]">
+                <span x-text="formatTime(remainingTime)"></span>
+            </div>
+
+        </div>
+
+        <!-- ATLETA 2 -->
+        <div class="flex flex-col justify-center items-end gap-[6vh]">
+            <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"
+                x-text="athleteTwoName"></h2>
+
+            <div class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg
+                        w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]">
+                <span x-text="athleteTwo"></span>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
