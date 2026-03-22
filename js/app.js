@@ -22,6 +22,8 @@ function timer() {
                     if (this.remainingTime > 0) {
                         this.remainingTime--;
 
+                        localStorage.setItem('remainingTime', this.remainingTime);
+
                         if (this.remainingTime === 0) {
                             this.pauseTimer();
                             this.$dispatch('match-ended');
@@ -52,6 +54,9 @@ function timer() {
         setTime(minutes) {
             this.remainingTime = minutes * 60;
             this.pauseTimer();
+
+            //sincroniza na hora
+            localStorage.setItem('remainingTime', this.remainingTime);
 
             //dispara evento global para zerar placar
             this.$dispatch('reset-score');

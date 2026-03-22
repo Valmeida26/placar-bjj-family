@@ -20,15 +20,18 @@
             athleteOne: 0,
             athleteTwo: 0,
             athleteOneName: 'Primeiro Atleta',
-            athleteTwoName: 'Segundo Atleta'
+            athleteTwoName: 'Segundo Atleta',
+            remainingTime: 300
         }"
             x-init="
             athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
             athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
+            remainingTime = Number(localStorage.getItem('remainingTime')) || 300;
 
             window.addEventListener('storage', () => {
                 athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
                 athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
+                remainingTime = Number(localStorage.getItem('remainingTime')) || 0;
         });
         "
             class="w-full h-full grid grid-cols-3 px-[3vw]"
@@ -50,9 +53,11 @@
 
             <img src="./img/flags/logo-bjj-family-white-sem-fundo.png"
                  class="object-contain w-[14vw] h-[14vw]">
-
-            <div x-data="timer()" class="text-white text-[clamp(80px,8vw,300px)]">
-                <span x-text="formatTime(remainingTime)"></span>
+            
+            <div class="text-white text-[clamp(80px,8vw,300px)]">
+                <span x-text="
+                    `${String(Math.floor(remainingTime / 60)).padStart(2,'0')}:${String(remainingTime % 60).padStart(2,'0')}`
+                "></span>
             </div>
 
         </div>
