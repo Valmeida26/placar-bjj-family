@@ -8,6 +8,8 @@
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <link rel="stylesheet" href="css/style.css">
+
     <!-- Alpine -->
     <script src="node_modules/alpinejs/dist/cdn.min.js" defer></script>
 </head>
@@ -38,7 +40,7 @@
     >
 
         <!-- ATLETA 1 -->
-        <div class="flex flex-col justify-center items-start gap-[6vh]">
+        <div class="flex flex-col justify-center items-start h-full py-[8vh] gap-[clamp(130px,6vh,120px)]">
             <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"
                 x-text="athleteOneName"></h2>
 
@@ -49,21 +51,20 @@
         </div>
 
         <!-- CENTRO (LOGO + TIMER) -->
-        <div class="flex flex-col items-center justify-center gap-[6vh]">
+        <div class="flex flex-col items-center justify-center gap-[clamp(80px,6vh,120px)]">
 
             <img src="./img/flags/logo-bjj-family-white-sem-fundo.png"
-                 class="object-contain w-[14vw] h-[14vw]">
-            
+                 class="object-contain w-[clamp(480px,20vw,400px)]">
+
             <div class="text-white text-[clamp(80px,8vw,300px)]">
                 <span x-text="
                     `${String(Math.floor(remainingTime / 60)).padStart(2,'0')}:${String(remainingTime % 60).padStart(2,'0')}`
                 "></span>
             </div>
-
         </div>
 
         <!-- ATLETA 2 -->
-        <div class="flex flex-col justify-center items-end gap-[6vh]">
+        <div class="flex flex-col justify-center items-end h-full py-[8vh] gap-[clamp(130px,6vh,120px)]">
             <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"
                 x-text="athleteTwoName"></h2>
 
