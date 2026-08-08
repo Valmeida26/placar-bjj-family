@@ -28,12 +28,21 @@
             x-init="
             athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
             athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
-            remainingTime = Number(localStorage.getItem('remainingTime')) || 300;
+            const savedTime = localStorage.getItem('remainingTime');
+
+            remainingTime = savedTime !== null
+                ? Number(savedTime)
+                : 300;
 
             window.addEventListener('storage', () => {
                 athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
                 athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
-                remainingTime = Number(localStorage.getItem('remainingTime')) || 0;
+                const savedTime = localStorage.getItem('remainingTime');
+
+                remainingTime = savedTime !== null
+                    ? Number(savedTime)
+                    : 300;
+
         });
         "
             class="w-full h-full grid grid-cols-3 px-[3vw]"

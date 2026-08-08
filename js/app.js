@@ -1,112 +1,159 @@
 function timer() {
     return {
-        remainingTime: 300, // valor inicial 5 minutos
+        remainingTime: 300,
         isRunning: false,
         interval: null,
         alarmSound: null,
         canEditScore: false,
-        //audioCtx: null, // contexto de áudio, inicializado só após clique do usuário
+        audioCtx: null,
 
-        startTimer() {
-            if (!this.isRunning) {
+        initTimer() {
+            const savedTime = localStorage.getItem('remainingTime');
 
-                // cria AudioContext após a primeira interação do usuário
-                if (!this.audioCtx) {
-                    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                }
+            if (savedTime !== null) {
+                this.remainingTime = Number(savedTime);
+            } else {
+                this.remainingTime = 300;
+                localStorage.setItem('remainingTime', this.remainingTime);
+            }
 
-                this.isRunning = true;
-                this.$dispatch('match-started');
+            // O sistema sempre volta PAUSADO depois de abrir/reiniciar.
+            this.isRunning = false;
 
-                this.interval = setInterval(() => {
-                    if (this.remainingTime > 0) {
-                        this.remainingTime--;
+            // Mantém o cronômetro sincronizado caso a outra janela altere.
+            window.addEventListener('storage', (event) => {
+                if (event.key === 'remainingTime' && event.newValue !== null) {
+                    this.remainingTime = Number(event.newValue);
 
-                        localStorage.setItem('remainingTime', this.remainingTime);
-
-                        if (this.remainingTime === 0) {
-                            this.pauseTimer();
-                            this.$dispatch('match-ended');
-                            this.playAlarm();
-                            //this.playBeepMultiple(1, 300); // 3 beeps de 0.3s cada
-                        }
-
-                    } else {
+                    // Se outra janela alterar o tempo, não inicia
+                    // automaticamente o cronômetro.
+                    if (this.isRunning) {
                         this.pauseTimer();
                     }
-                }, 1000);
+                }
+            });
+        },
+
+        startTimer() {
+            if (this.isRunning) {
+                return;
             }
+
+            // Cria AudioContext após interação do usuário
+            if (!this.audioCtx) {
+                this.audioCtx = new (
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
+            }
+
+            this.isRunning = true;
+
+            this.$dispatch('match-started');
+
+            // Salva imediatamente o estado atual
+            localStorage.setItem(
+                'remainingTime',
+                this.remainingTime
+            );
+
+            this.interval = setInterval(() => {
+
+                if (this.remainingTime > 0) {
+
+                    this.remainingTime--;
+
+                    // Salva a cada segundo
+                    localStorage.setItem(
+                        'remainingTime',
+                        this.remainingTime
+                    );
+
+                    if (this.remainingTime === 0) {
+
+                        this.pauseTimer();
+
+                        this.$dispatch('match-ended');
+
+                        this.playAlarm();
+                    }
+
+                } else {
+
+                    this.pauseTimer();
+                }
+
+            }, 1000);
         },
 
         pauseTimer() {
-            clearInterval(this.interval);
+
+            if (this.interval !== null) {
+                clearInterval(this.interval);
+                this.interval = null;
+            }
+
             this.isRunning = false;
+
+            // Salva imediatamente ao pausar
+            localStorage.setItem(
+                'remainingTime',
+                this.remainingTime
+            );
         },
 
         toggleTimer() {
+
             if (this.isRunning) {
                 this.pauseTimer();
             } else {
-                this.startTimer();
+
+                if (this.remainingTime > 0) {
+                    this.startTimer();
+                }
+
             }
         },
 
         setTime(minutes) {
-            this.remainingTime = minutes * 60;
+
             this.pauseTimer();
 
-            //sincroniza na hora
-            localStorage.setItem('remainingTime', this.remainingTime);
+            this.remainingTime = minutes * 60;
 
-            //dispara evento global para zerar placar
+            // Salva imediatamente
+            localStorage.setItem(
+                'remainingTime',
+                this.remainingTime
+            );
+
+            // Reseta o placar
             this.$dispatch('reset-score');
         },
 
         formatTime(time) {
+
             const minutes = Math.floor(time / 60);
             const seconds = time % 60;
-            return `${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         },
 
         playAlarm() {
+
             if (!this.alarmSound) {
-                this.alarmSound = new Audio('./audio/alerta_fim_luta.mp3');
+
+                this.alarmSound = new Audio(
+                    './audio/alerta_fim_luta.mp3'
+                );
+
                 this.alarmSound.preload = "auto";
             }
 
-            this.alarmSound.currentTime = 0; // sempre começa do início
+            this.alarmSound.currentTime = 0;
+
             this.alarmSound.play();
-        },
-
-        // playBeep() {
-        //     if (!this.audioCtx) return;
-        //
-        //     const oscillator = this.audioCtx.createOscillator();
-        //     const gainNode = this.audioCtx.createGain();
-        //
-        //     // Som mais "redondo" e menos agudo
-        //     oscillator.type = 'triangle';
-        //     oscillator.frequency.setValueAtTime(1300, this.audioCtx.currentTime);
-        //
-        //
-        //     oscillator.connect(gainNode);
-        //     gainNode.connect(this.audioCtx.destination);
-        //
-        //     // Volume forte mas controlado
-        //     gainNode.gain.setValueAtTime(0.2, this.audioCtx.currentTime);
-        //
-        //     oscillator.start();
-        //
-        //     // Agora bem mais longo (5 segundos)
-        //     oscillator.stop(this.audioCtx.currentTime + 2);
-        // },
-
-        // toca múltiplos beeps em sequência
-        // playBeepMultiple(times = 1, interval = 300) {
-        //     for (let i = 0; i < times; i++) {
-        //         setTimeout(() => this.playBeep(), i * interval);
-        //     }
-        // }
+        }
     }
 }
 

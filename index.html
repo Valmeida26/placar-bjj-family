@@ -69,10 +69,9 @@
                                     @click="canEditScore && (athleteOne += 2); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                +2
+                                            ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                            : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> +2
                             </button>
                         </li>
                         <li>
@@ -80,10 +79,9 @@
                                     @click="canEditScore && (athleteOne += 3); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                +3
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> +3
                             </button>
                         </li>
                         <li>
@@ -91,10 +89,9 @@
                                     @click="canEditScore && (athleteOne += 4); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                +4
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> +4
                             </button>
                         </li>
                     </ul>
@@ -105,10 +102,9 @@
                                     @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 2)); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                -2
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> -2
                             </button>
                         </li>
                         <li>
@@ -116,10 +112,9 @@
                                     @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 3)); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                -3
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> -3
                             </button>
                         </li>
                         <li>
@@ -127,10 +122,9 @@
                                     @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 4)); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                -4
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> -4
                             </button>
                         </li>
                     </ul>
@@ -140,9 +134,9 @@
                     <div
                             class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg"
                             :class="athleteOne >= 100
-                            ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
-                            : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'"
-                    >
+                                ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
+                                : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'"
+                            >
                         <span x-text="athleteOne"></span>
                     </div>
                 </div>
@@ -160,8 +154,13 @@
                          class="fa-box-up object-contain w-[14vw] h-[14vw]">
                 </div>
 
+<!--                <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[20vw]"-->
+<!--                     x-data="timer()">-->
+
                 <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[20vw]"
-                     x-data="timer()">
+                     x-data="timer()"
+                     x-init="initTimer()">
+
 
                     <!-- Mostrador -->
                     <h1
@@ -193,29 +192,25 @@
                                     @click.outside="openMenu = false"
                                     x-transition
                                     class="absolute bottom-16 left-1/2 -translate-x-1/2
-                                   bg-neutral-900 rounded-xl shadow-2xl
-                                   flex gap-2 p-4"
-                                >
+                                       bg-neutral-900 rounded-xl shadow-2xl
+                                       flex gap-2 p-4"
+                                    >
 <!--                                tempo dos relogios-->
                                 <button
                                         class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
-                                        @click="setTime(2); openMenu=false">
-                                    2 minutos
+                                        @click="setTime(2); openMenu=false"> 2 minutos
                                 </button>
 
                                 <button
                                         class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
-                                        @click="setTime(3); openMenu=false">
-                                    3 minutos
+                                        @click="setTime(3); openMenu=false"> 3 minutos
                                 </button>
 
                                 <button
                                         class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
-                                        @click="setTime(5); openMenu=false">
-                                    5 minutos
+                                        @click="setTime(5); openMenu=false"> 5 minutos
                                 </button>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -240,10 +235,9 @@
                                     @click="canEditScore && (athleteTwo += 2); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                +2
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> +2
                             </button>
                         </li>
                         <li>
@@ -251,10 +245,9 @@
                                     @click="canEditScore && (athleteTwo += 3); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                +3
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> +3
                             </button>
                         </li>
                         <li>
@@ -262,10 +255,9 @@
                                     @click="canEditScore && (athleteTwo += 4); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                +4
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> +4
                             </button>
                         </li>
                     </ul>
@@ -275,10 +267,9 @@
                                     @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 2)); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                -2
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> -2
                             </button>
                         </li>
                         <li>
@@ -286,10 +277,9 @@
                                     @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 3)); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                -3
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> -3
                             </button>
                         </li>
                         <li>
@@ -297,10 +287,9 @@
                                     @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 4)); save()"
                                     :disabled="!canEditScore"
                                     :class="!matchActive && !canEditScore
-                    ? 'opacity-30 cursor-not-allowed bg-neutral-700'
-                    : 'bg-neutral-800 hover:bg-white/10'"
-                                    class="btn w-10 h-12 text-white transition">
-                                -4
+                                        ? 'opacity-30 cursor-not-allowed bg-neutral-700'
+                                        : 'bg-neutral-800 hover:bg-white/10'"
+                                    class="btn w-10 h-12 text-white transition"> -4
                             </button>
                         </li>
                     </ul>
@@ -310,9 +299,9 @@
                     <div
                             class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg"
                             :class="athleteTwo >= 100
-                            ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
-                            : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'"
-                    >
+                                ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
+                                : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'"
+                            >
                         <span x-text="athleteTwo"></span>
                     </div>
                 </div>
