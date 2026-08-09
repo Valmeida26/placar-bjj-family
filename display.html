@@ -17,8 +17,7 @@
 <body class="bg-neutral-900 h-full">
 
 <main class="w-full h-screen flex items-center justify-center">
-    <section
-            x-data="{
+    <section x-data="{
             athleteOne: 0,
             athleteTwo: 0,
             athleteOneName: 'Primeiro Atleta',
@@ -42,10 +41,8 @@
                 remainingTime = savedTime !== null
                     ? Number(savedTime)
                     : 300;
-
         });
-        "
-            class="w-full h-full grid grid-cols-3 px-[3vw]"
+        " class="w-full h-full grid grid-cols-3 px-[3vw]"
     >
 
         <!-- ATLETA 1 -->
@@ -53,9 +50,18 @@
             <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"
                 x-text="athleteOneName"></h2>
 
-            <div class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg
-                        w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]">
-                <span x-text="athleteOne"></span>
+            <!--            <div class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg-->
+            <!--                        w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]">-->
+            <!--                <span x-text="athleteOne"></span>-->
+            <!--            </div>-->
+            <!-- Placar -->
+            <div class="flex justify-end">
+                <div class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg"
+                     :class="athleteOne >= 100
+                            ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
+                            : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'">
+                    <span x-text="athleteOne"></span>
+                </div>
             </div>
         </div>
 
@@ -65,10 +71,49 @@
             <img src="./img/flags/logo-bjj-family-white-sem-fundo.png"
                  class="object-contain w-[clamp(480px,20vw,400px)]">
 
-            <div class="text-white text-[clamp(80px,8vw,300px)]">
-                <span x-text="
-                    `${String(Math.floor(remainingTime / 60)).padStart(2,'0')}:${String(remainingTime % 60).padStart(2,'0')}`
-                "></span>
+            <!--            <div class="text-white text-[clamp(80px,8vw,300px)]">-->
+            <!--                <span x-text="-->
+            <!--                    `${String(Math.floor(remainingTime / 60)).padStart(2,'0')}:${String(remainingTime % 60).padStart(2,'0')}`-->
+            <!--                "></span>-->
+            <!--            </div>-->
+            <!-- =========================================
+                 CRONÔMETRO EXCLUSIVO DA TELA 2
+            ========================================== -->
+            <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[20vw]" x-data="displayTimer()" x-init="initTimer()">
+
+                <!-- Mostrador -->
+                <!-- RELÓGIO 2 -->
+                <div x-data="displayTimer()" x-init="initTimer()">
+
+                    <div style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        white-space: nowrap;
+                        color: white;
+                        font-size: clamp(80px, 8vw, 300px);
+                        line-height: 1;">
+
+                        <!-- MINUTO 1 -->
+                        <span x-text="String(Math.floor(remainingTime / 60)).padStart(2, '0')[0]"
+                              style=" display: inline-block; width: 0.52em; text-align: center;"></span>
+
+                        <!-- MINUTO 2 -->
+                        <span x-text="String(Math.floor(remainingTime / 60)).padStart(2, '0')[1]"
+                              style=" display: inline-block; width: 0.52em; text-align: center;"></span>
+
+                        <!-- DOIS PONTOS -->
+                        <span style=" display: inline-block; width: 0.28em; text-align: center;">:</span>
+
+                        <!-- SEGUNDO 1 -->
+                        <span x-text="String(remainingTime % 60).padStart(2, '0')[0]"
+                              style=" display: inline-block; width: 0.52em; text-align: center;"></span>
+
+                        <!-- SEGUNDO 2 -->
+                        <span x-text="String(remainingTime % 60).padStart(2, '0')[1]"
+                              style=" display: inline-block; width: 0.52em; text-align: center;"></span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -77,12 +122,20 @@
             <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"
                 x-text="athleteTwoName"></h2>
 
-            <div class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg
-                        w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]">
-                <span x-text="athleteTwo"></span>
+            <!--            <div class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg-->
+            <!--                        w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]">-->
+            <!--                <span x-text="athleteTwo"></span>-->
+            <!--            </div>-->
+            <!-- Placar -->
+            <div class="flex justify-end">
+                <div class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg"
+                     :class="athleteTwo >= 100
+                            ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
+                            : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'">
+                    <span x-text="athleteTwo"></span>
+                </div>
             </div>
         </div>
-
     </section>
 </main>
 

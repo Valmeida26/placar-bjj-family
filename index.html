@@ -18,37 +18,35 @@
 
 <main class="grid grid-flow-col grid-cols-12 grid-rows-3 w-full">
     <section x-data="{
-        athleteOne: 0,
-        athleteTwo: 0,
-        athleteOneName: 'Primeiro Atleta',
-        athleteTwoName: 'Segundo Atleta',
-        matchActive: false,
-        canEditScore: false,
-            save() {
-                localStorage.setItem('athleteOne', this.athleteOne);
-                localStorage.setItem('athleteTwo', this.athleteTwo);
-            }
-    }"
-    x-init="
-        athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
-        athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
-
-        window.addEventListener('storage', () => {
+            athleteOne: 0,
+            athleteTwo: 0,
+            athleteOneName: 'Primeiro Atleta',
+            athleteTwoName: 'Segundo Atleta',
+            matchActive: false,
+            canEditScore: false,
+                save() {
+                    localStorage.setItem('athleteOne', this.athleteOne);
+                    localStorage.setItem('athleteTwo', this.athleteTwo);
+                }
+        }"
+        x-init="
             athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
             athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
-        });
-    "
-    x-on:reset-score.window="
-    athleteOne = 0;
-    athleteTwo = 0;
-    matchActive = false;
-    canEditScore = false;
-    save(); // sincroniza o localStorage
-    "
-     x-on:match-started.window="matchActive = true; canEditScore = true;"
-     x-on:match-ended.window="matchActive = false; canEditScore = true;"
-
-            class="h-screen w-screen flex items-center justify-center bg-neutral-900 overflow-hidden"
+            window.addEventListener('storage', () => {
+                athleteOne = Number(localStorage.getItem('athleteOne')) || 0;
+                athleteTwo = Number(localStorage.getItem('athleteTwo')) || 0;
+            });
+        "
+        x-on:reset-score.window="
+           athleteOne = 0;
+           athleteTwo = 0;
+           matchActive = false;
+           canEditScore = false;
+           save(); // sincroniza o localStorage
+        "
+        x-on:match-started.window="matchActive = true; canEditScore = true;"
+        x-on:match-ended.window="matchActive = false; canEditScore = true;"
+        class="h-screen w-screen flex items-center justify-center bg-neutral-900 overflow-hidden"
     >
 
         <div class="w-full h-full grid grid-cols-3 px-[3vw]">
@@ -65,30 +63,21 @@
                 <div>
                     <ul class="flex gap-8 justify-between">
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteOne += 2); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteOne += 2); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                             ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                             : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> +2
                             </button>
                         </li>
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteOne += 3); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteOne += 3); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> +3
                             </button>
                         </li>
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteOne += 4); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteOne += 4); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> +4
@@ -98,30 +87,21 @@
 
                     <ul class="flex gap-8 mt-4 justify-end">
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 2)); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 2)); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> -2
                             </button>
                         </li>
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 3)); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 3)); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> -3
                             </button>
                         </li>
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 4)); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteOne = Math.max(0, athleteOne - 4)); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> -4
@@ -131,12 +111,10 @@
                 </div>
                 <!-- Placar -->
                 <div class="flex justify-end">
-                    <div
-                            class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg"
-                            :class="athleteOne >= 100
+                    <div class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg"
+                         :class="athleteOne >= 100
                                 ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
-                                : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'"
-                            >
+                                : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'">
                         <span x-text="athleteOne"></span>
                     </div>
                 </div>
@@ -154,24 +132,48 @@
                          class="fa-box-up object-contain w-[14vw] h-[14vw]">
                 </div>
 
-<!--                <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[20vw]"-->
-<!--                     x-data="timer()">-->
+                <!--                <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[20vw]"-->
+                <!--                     x-data="timer()">-->
 
-                <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[20vw]"
-                     x-data="timer()"
-                     x-init="initTimer()">
-
+                <div class="rounded-xl flex flex-col items-center p-8 shadow-xl w-[20vw]" x-data="timer()" x-init="initTimer()">
 
                     <!-- Mostrador -->
-                    <h1
-                            x-text="formatTime(remainingTime)"
-                            class="text-[clamp(80px,8vw,300px)] text-white tabular-nums mb-6">
-                    </h1>
+<!--                    <h1-->
+<!--                            x-text="formatTime(remainingTime)"-->
+<!--                            class="text-[clamp(80px,8vw,300px)] text-white tabular-nums mb-6">-->
+<!--                    </h1>-->
+                    <div style="
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            white-space: nowrap;
+                            color: white;
+                            font-size: clamp(80px, 8vw, 300px);
+                            line-height: 1; ">
+
+                        <!-- MINUTO 1 -->
+                        <span x-text="String(Math.floor(remainingTime / 60)).padStart(2, '0')[0]"
+                              style=" display: inline-block; width: 0.52em; text-align: center;"></span>
+
+                        <!-- MINUTO 2 -->
+                        <span x-text="String(Math.floor(remainingTime / 60)).padStart(2, '0')[1]"
+                              style=" display: inline-block; width: 0.52em; text-align: center;"></span>
+
+                        <!-- DOIS PONTOS -->
+                        <span style=" display: inline-block; width: 0.28em; text-align: center;">:</span>
+
+                        <!-- SEGUNDO 1 -->
+                        <span x-text="String(remainingTime % 60).padStart(2, '0')[0]"
+                              style=" display: inline-block; width: 0.52em; text-align: center;"></span>
+
+                        <!-- SEGUNDO 2 -->
+                        <span x-text="String(remainingTime % 60).padStart(2, '0')[1]"
+                              style=" display: inline-block; width: 0.52em; text-align: center;"></span>
+                    </div>
 
                     <!-- Controles -->
                     <div class="flex flex-col items-center gap-6 w-full">
-                        <button class="text-white text-4xl"
-                                x-on:click="toggleTimer()">
+                        <button class="text-white text-4xl" x-on:click="toggleTimer()">
                             <i class="fa-solid fa-pause" x-show="isRunning"></i>
                             <i class="fa-solid fa-play" x-show="!isRunning"></i>
                         </button>
@@ -179,35 +181,24 @@
                         <div class="relative" x-data="{ openMenu: false }">
 
                             <!-- Botão ícone relógio -->
-                            <button
-                                    class="text-white text-3xl bg-neutral-900 px-4 py-3 rounded-lg hover:bg-white/10"
-                                    @click="openMenu = !openMenu"
-                            >
-                                <i class="fa-solid fa-clock"></i>
+                            <button class="text-white text-3xl bg-neutral-900 px-4 py-3 rounded-lg hover:bg-white/10"
+                                    @click="openMenu = !openMenu"><i class="fa-solid fa-clock"></i>
                             </button>
 
                             <!-- Menu Dropdown -->
-                            <div
-                                    x-show="openMenu"
-                                    @click.outside="openMenu = false"
-                                    x-transition
-                                    class="absolute bottom-16 left-1/2 -translate-x-1/2
-                                       bg-neutral-900 rounded-xl shadow-2xl
-                                       flex gap-2 p-4"
-                                    >
-<!--                                tempo dos relogios-->
-                                <button
-                                        class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
+                            <div x-show="openMenu" @click.outside="openMenu = false" x-transition
+                                 class="absolute bottom-16 left-1/2 -translate-x-1/2 bg-neutral-900 rounded-xl shadow-2xl flex gap-2 p-4">
+
+                                <!--tempo dos relogios-->
+                                <button class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
                                         @click="setTime(2); openMenu=false"> 2 minutos
                                 </button>
 
-                                <button
-                                        class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
+                                <button class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
                                         @click="setTime(3); openMenu=false"> 3 minutos
                                 </button>
 
-                                <button
-                                        class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
+                                <button class="px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-white/10"
                                         @click="setTime(5); openMenu=false"> 5 minutos
                                 </button>
                             </div>
@@ -215,7 +206,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- =========================
                  ATLETA 2 (DIREITA)
@@ -231,30 +221,21 @@
                 <div>
                     <ul class="flex gap-8 justify-end">
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteTwo += 2); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteTwo += 2); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> +2
                             </button>
                         </li>
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteTwo += 3); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteTwo += 3); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> +3
                             </button>
                         </li>
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteTwo += 4); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteTwo += 4); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> +4
@@ -263,30 +244,21 @@
                     </ul>
                     <ul class="flex gap-8 mt-4 justify-end">
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 2)); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 2)); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> -2
                             </button>
                         </li>
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 3)); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 3)); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> -3
                             </button>
                         </li>
                         <li>
-                            <button
-                                    @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 4)); save()"
-                                    :disabled="!canEditScore"
-                                    :class="!matchActive && !canEditScore
+                            <button @click="canEditScore && (athleteTwo = Math.max(0, athleteTwo - 4)); save()" :disabled="!canEditScore" :class="!matchActive && !canEditScore
                                         ? 'opacity-30 cursor-not-allowed bg-neutral-700'
                                         : 'bg-neutral-800 hover:bg-white/10'"
                                     class="btn w-10 h-12 text-white transition"> -4
@@ -294,14 +266,13 @@
                         </li>
                     </ul>
                 </div>
+
                 <!-- Placar -->
                 <div class="flex justify-end">
-                    <div
-                            class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg"
-                            :class="athleteTwo >= 100
+                    <div class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg"
+                         :class="athleteTwo >= 100
                                 ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
-                                : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'"
-                            >
+                                : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'">
                         <span x-text="athleteTwo"></span>
                     </div>
                 </div>
