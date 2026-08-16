@@ -47,19 +47,18 @@
 
         <!-- ATLETA 1 -->
         <div class="flex flex-col justify-center items-start h-full py-[8vh] gap-[clamp(130px,6vh,120px)]">
-            <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"
-                x-text="athleteOneName"></h2>
-
-            <!--            <div class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg-->
-            <!--                        w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]">-->
-            <!--                <span x-text="athleteOne"></span>-->
-            <!--            </div>-->
-            <!-- Placar -->
+<!--            <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"-->
+<!--                x-text="athleteOneName"></h2>-->
+            <!-- =========================================================
+            PLACAR DO ATLETA 1 = w-[14vw] = largura da caixa do placar - h-[35vh]  = altura da caixa do placar
+                                 text-[clamp(120px,14vw,400px)] - tamanho da fonte do número - mínimo: 120px
+                                 tamanho preferencial: 14vw - máximo: 400px
+            ========================================================= -->
             <div class="flex justify-end">
                 <div class="bg-neutral-800/80 flex items-center justify-center font-bold text-neutral-100 rounded-lg"
                      :class="athleteOne >= 100
-                            ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
-                            : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'">
+                            ? 'w-[20vw] h-[36vh] text-[clamp(120px,12vw,400px)]'
+                            : 'w-[16vw] h-[36vh] text-[clamp(120px,14vw,400px)]'">
                     <span x-text="athleteOne"></span>
                 </div>
             </div>
@@ -119,19 +118,18 @@
 
         <!-- ATLETA 2 -->
         <div class="flex flex-col justify-center items-end h-full py-[8vh] gap-[clamp(130px,6vh,120px)]">
-            <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"
-                x-text="athleteTwoName"></h2>
-
-            <!--            <div class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg-->
-            <!--                        w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]">-->
-            <!--                <span x-text="athleteTwo"></span>-->
-            <!--            </div>-->
-            <!-- Placar -->
+<!--            <h2 class="uppercase text-white text-[clamp(24px,3vw,80px)]"-->
+<!--                x-text="athleteTwoName"></h2>-->
+            <!-- =========================================================
+            PLACAR DO ATLETA 2 = w-[14vw] = largura da caixa do placar - h-[35vh]  = altura da caixa do placar
+                                 text-[clamp(120px,14vw,400px)] - tamanho da fonte do número - mínimo: 120px
+                                 tamanho preferencial: 14vw - máximo: 400px
+            ========================================================= -->
             <div class="flex justify-end">
                 <div class="bg-green-800 flex items-center justify-center font-bold text-yellow-400 rounded-lg"
                      :class="athleteTwo >= 100
-                            ? 'w-[20vw] h-[28vh] text-[clamp(120px,12vw,400px)]'
-                            : 'w-[14vw] h-[28vh] text-[clamp(120px,12vw,400px)]'">
+                            ? 'w-[20vw] h-[36vh] text-[clamp(120px,12vw,400px)]'
+                            : 'w-[16vw] h-[36vh] text-[clamp(120px,14vw,400px)]'">
                     <span x-text="athleteTwo"></span>
                 </div>
             </div>
