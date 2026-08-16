@@ -1,6 +1,17 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
+app.setPath(
+    'userData',
+    path.join(app.getPath('appData'), 'BJJ Family - 2 Telas')
+);
+
+const gotTheLock = app.requestSingleInstanceLock();
+
+if (!gotTheLock) {
+    app.quit();
+}
+
 let mainWindow;
 let displayWindow;
 
